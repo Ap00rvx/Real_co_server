@@ -6,6 +6,11 @@ const projectSchema = new mongoose.Schema({
         required: true,
 
     },
+    brochure:{
+        type: String,
+        required: false,
+        default:"",
+    },
     image:{
         type: String,
         required: false,
