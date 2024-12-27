@@ -36,7 +36,9 @@ const deleteService = async (req, res) => {
         if(!service){
             return res.status(404).send({message: 'Service not found'});
         }
-        await service.delete();
+        
+        await service.deleteOne()
+        
         res.status(200).send({message: 'Service deleted'});
     } catch (error) {
         console.log(error);
