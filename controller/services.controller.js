@@ -12,13 +12,14 @@ const getAllServices = async (req, res) => {
     }
 }
 const createService = async (req, res) => {
-    const {name, description} = req.body;
+    const {name, description ,image} = req.body;
     if(!name){
         return res.status(400).send({message: 'Name is required'});
     }
     try {
         const service = new Service({
             name,
+            image, 
             description,
         });
         await service.save();
