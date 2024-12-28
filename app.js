@@ -8,6 +8,9 @@ const servicesRoutes = require('./routes/services.routes')
 const projectRoutes = require('./routes/project.routes')
 const userRoutes = require('./routes/user.routes')
 const statsRoutes = require('./routes/stats.routes')
+const visitorRoutes  = require('./routes/visitor.routes')
+
+
 dotenv.config()
 const port = process.env.PORT || 3000
 app.use(cors())
@@ -20,6 +23,7 @@ app.use('/api/service', servicesRoutes)
 app.use('/api/client', clientRoutes)
 app.use('/api/stats', statsRoutes)
 app.use('/api/project', projectRoutes)
+app.use("/api/visitor",visitorRoutes); 
 
 
 
