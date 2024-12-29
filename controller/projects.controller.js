@@ -67,6 +67,7 @@ exports.updateProject = async (req,res) => {
         project.startDate = startDate || project.startDate;
         project.status = status || project.status;
         project.title = title || project.title;
+        project.brochure = brochure || project.brochure;
 
 
         await project.save();
