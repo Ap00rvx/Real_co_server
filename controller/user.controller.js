@@ -80,11 +80,36 @@ const deleteUser = async(req,res) =>{
     }
     
 }
+
+const changePassword = async(req,res) =>{
+    const {username, password} = req.body;
+    const user = req.user;
+    if(user.role !== 'admin' && user.username !== username){
+        return res.status(403).send('Forbidden');
+    }
+    try {
+        const user = await User.findOne({username});
+        if(!user){
+            return res.status(404).send('User not found');
+        }
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(password, salt);
+        await user.save();
+        res.status(200).send({message: 'Password changed successfully', user: {username: user.username, role: user.role}});
+    } catch (error) {
+        res.status(500).send(error);
+    }
+
+};
+
+
+
 module.exports = {
     createUser,
     login,
     deleteUser,
-    getUser
+    getUser,
+    changePassword
 }
 
 
