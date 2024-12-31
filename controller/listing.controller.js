@@ -19,20 +19,26 @@ const createListing = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
-const updateVisibility  = async (req, res) => {
+const updateListings   = async (req, res) => {
     const { id } = req.params;
-    const { visible } = req.body;
+    const { visible,title,description,contact, images} = req.body;
     try {
         const listing = await Listing.findById(id);
         if (!listing) {
             return res.status(404).json({ message: "Listing not found" });
         }
-        listing.visible = visible;
+        listing.visible = visible || listing.visible;
+        listing.title = title || listing.title;
+        listing.description = description || listing.description;
+        listing.contact = contact || listing.contact;
+        listing.images = images || listing.images;
         await listing.save();
-        res.status(200).json({ message: "Visibility updated successfully", listing });
+        res.status(200).json({ message: "Listing updated successfully", listing });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+
+
 }
 
 const deleteListing = async (req, res) => {
