@@ -13,7 +13,7 @@ const userRoutes = require('./routes/user.routes')
 const statsRoutes = require('./routes/stats.routes')
 const visitorRoutes  = require('./routes/visitor.routes')
 const generalRoutes = require('./routes/general.routes')
-
+const listingRoutes = require('./routes/listing.routes')
 
 dotenv.config()
 const port = process.env.PORT || 3000
@@ -29,7 +29,7 @@ app.use('/api/stats', statsRoutes)
 app.use('/api/project', projectRoutes)
 app.use("/api/visitor",visitorRoutes); 
 app.use('/api/general', generalRoutes)
-
+app.use('/api/listing', listingRoutes)
 
 
 
