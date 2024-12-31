@@ -72,4 +72,4 @@ const getVisibleListing = async (req, res) => {
     }
 }
 
-module.exports = {createListing, updateVisibility, deleteListing, getListing, getVisibleListing};
+module.exports = {createListing, updateListings, deleteListing, getListing, getVisibleListing};
