@@ -17,7 +17,9 @@ const listingRoutes = require('./routes/listing.routes')
 
 dotenv.config()
 const port = process.env.PORT || 3000
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}))
 app.use(express.json())
 
 connectDatabase(process.env.DATABASE_URL, process.env.DATABASE_NAME);
